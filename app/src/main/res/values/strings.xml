@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">ChatAppC39GMonThu</string>
+    <string name="application_logo_image">application logo image</string>
+    <string name="application_signature_image">application signature image</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="icon_back">icon back</string>
+    <string name="login">Login</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="trailing_icon">trailing Icon</string>
+    <string name="icon_forward">icon forward</string>
+    <string name="or_create_an_account">or Create an Account</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="register">Regsiter</string>
+    <string name="first_name">First name</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="ok">OK</string>
+    <string name="chat_app">Chat App</string>
+    <string name="icon_add_room">icon add room</string>
+    <string name="title_activity_add_room">AddRoomActivity</string>
+    <string name="create_new_room">Create New Room</string>
+    <string name="add_room_image">add room image</string>
+    <string name="room_name">Room Name</string>
+    <string name="room_desc">Room Description</string>
+    <string name="create">Create</string>
+    <string name="selected_category_image">Selected Category Image</string>
+    <string name="category_image">category Image</string>
+</resources>
