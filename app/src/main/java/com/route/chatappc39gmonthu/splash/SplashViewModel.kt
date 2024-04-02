@@ -7,6 +7,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.route.chatappc39gmonthu.FirebaseUtils
 import com.route.chatappc39gmonthu.model.AppUser
+import com.route.chatappc39gmonthu.model.DataUtils
 
 class SplashViewModel : ViewModel() {
     val events = mutableStateOf<SplashEvent>(SplashEvent.Idle)
@@ -27,6 +28,7 @@ class SplashViewModel : ViewModel() {
         FirebaseUtils.getUser(uid, onSuccessListener = { docSnapshot ->
             val user = docSnapshot.toObject(AppUser::class.java)
             user?.let {
+                DataUtils.appUser = it
                 navigateToHome(it)
             } ?: navigateToLogin()
         }, onFailureListener = {

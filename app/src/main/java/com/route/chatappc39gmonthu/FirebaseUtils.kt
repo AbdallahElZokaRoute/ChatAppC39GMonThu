@@ -3,10 +3,13 @@ package com.route.chatappc39gmonthu
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.route.chatappc39gmonthu.model.AppUser
+import com.route.chatappc39gmonthu.model.Message
 import com.route.chatappc39gmonthu.model.Room
 
 object FirebaseUtils {
@@ -39,10 +42,12 @@ object FirebaseUtils {
         onSuccessListener: OnSuccessListener<Void>,
         onFailureListener: OnFailureListener
     ) {
-        Firebase.firestore
-            .collection(Room.COLLECTION_NAME)
-            .document()
-            .set(room)
+        val documentReference =
+            Firebase.firestore
+                .collection(Room.COLLECTION_NAME)
+                .document()
+        room.id = documentReference.id
+        documentReference.set(room)
             .addOnSuccessListener(onSuccessListener)
             .addOnFailureListener(onFailureListener)
     }
@@ -55,6 +60,32 @@ object FirebaseUtils {
             .get()
             .addOnSuccessListener(onSuccessListener)
             .addOnFailureListener(onFailureListener)
+    }
+
+    fun addMessage(
+        message: Message,
+        onSuccessListener: OnSuccessListener<Void>,
+        onFailureListener: OnFailureListener
+    ) {
+        Firebase.firestore.collection(Room.COLLECTION_NAME)
+            .document(message.roomId!!)
+            .collection(Message.COLLECTION_NAME)
+            .document()
+            .set(message)
+            .addOnSuccessListener(onSuccessListener)
+            .addOnFailureListener(onFailureListener)
+
+    }
+
+    fun getMessages(
+        roomId: String,
+        snapshotListener: EventListener<QuerySnapshot>
+    ) {
+        Firebase.firestore.collection(Room.COLLECTION_NAME)
+            .document(roomId)
+            .collection(Message.COLLECTION_NAME)
+            .orderBy("dateTime",Query.Direction.DESCENDING)
+            .addSnapshotListener(snapshotListener)
     }
 
 }

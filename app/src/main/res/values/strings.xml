@@ -26,4 +26,9 @@
     <string name="create">Create</string>
     <string name="selected_category_image">Selected Category Image</string>
     <string name="category_image">category Image</string>
+    <string name="room_category_image">Room Category Image</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="type_a_message">Type a message</string>
+    <string name="send">Send</string>
+    <string name="icon_send_a_message">icon send a message</string>
 </resources>

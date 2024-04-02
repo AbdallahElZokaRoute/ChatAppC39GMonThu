@@ -13,6 +13,7 @@ val black = Color(0xFF303030)
 val cyan = Color(0xFF3598DB)
 val white = Color(0xFFF9F9F9)
 val gray = Color(0xFFBDBDBD)
+val gray2 = Color(0xFFA9A8A8)
 
 val black2 = Color(0xFF505050)
 val black3 = Color(0xFF383838)

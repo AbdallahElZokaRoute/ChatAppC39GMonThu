@@ -8,6 +8,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.route.chatappc39gmonthu.FirebaseUtils
 import com.route.chatappc39gmonthu.model.AppUser
+import com.route.chatappc39gmonthu.model.DataUtils
 
 class LoginViewModel : ViewModel() {
     val emailState = mutableStateOf("")
@@ -48,6 +49,7 @@ class LoginViewModel : ViewModel() {
         FirebaseUtils.getUser(uid, onSuccessListener = { docSnapshot ->
             isLoading.value = false
             val user = docSnapshot.toObject(AppUser::class.java)
+            DataUtils.appUser = user
             navigateToHome(user!!)
         }, onFailureListener = {
             isLoading.value = false

@@ -8,6 +8,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.route.chatappc39gmonthu.FirebaseUtils
 import com.route.chatappc39gmonthu.model.AppUser
+import com.route.chatappc39gmonthu.model.DataUtils
 
 class RegisterViewModel : ViewModel() {
     val firstNameState = mutableStateOf("")
@@ -43,6 +44,7 @@ class RegisterViewModel : ViewModel() {
         val user = AppUser(firstNameState.value, emailState.value, uid)
         FirebaseUtils.addUser(user, onSuccessListener = {
             isLoading.value = false
+            DataUtils.appUser = user
             navigateToHome(user)
         }, onFailureListener = {
             isLoading.value = false
